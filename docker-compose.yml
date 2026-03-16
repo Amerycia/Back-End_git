@@ -3,9 +3,9 @@ services:
     image: postgres
     container_name: node_course_postgres_container
     environment:
-      POSTGRES_USER: nodejs_course_admin
-      POSTGRES_PASSWORD: my_password
-      POSTGRES_DB: nodejs_course_database
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: database
     ports:
       - "5432:5432"
 
