@@ -1,15 +1,15 @@
 const { drizzle } = require('drizzle-orm/node-postgres');
-const { Client } = require('pg');
+const { Pool } = require('pg');
 const schema = require('./schema');
 
-const client = new Client({
-  host: '127.0.0.1',
+const pool = new Pool({
+  host: 'localhost',
   port: 5432,
   user: 'admin',
   password: 'password',
   database: 'database',
 });
 
-client.connect();
+const db = drizzle(pool, { schema });
 
-module.exports = drizzle(client, { schema });
+module.exports = db;
