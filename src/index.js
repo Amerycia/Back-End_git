@@ -1,7 +1,9 @@
-// index.js
-
 const express = require('express');
+const bodyParser = require('body-parser');
+
 const productRoutes = require('./product.routes');
+const userRouter = require('./user/user.router');
+
 const { logRequest } = require('./middleware');
 const {
   logErrors,
@@ -12,13 +14,12 @@ const {
 const app = express();
 const PORT = 3000;
 
-// Глобальний middleware логування
 app.use(logRequest);
+app.use(bodyParser.json());
 
-// Основні маршрути
 app.use(productRoutes);
+app.use(userRouter);
 
-// Мідлвари обробки помилок – ПІСЛЯ роутів
 app.use(logErrors);
 app.use(clientErrorHandler);
 app.use(errorResponder);
